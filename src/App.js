@@ -1,23 +1,18 @@
-import logo from './logo.svg';
+import { useState } from 'react';
+import React from 'react';
+import MovieCard from './Component/MovieCard';
+import movies from './Component/MovieList'
+import Add from './Component/Add';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+    <h1 className='fw-bold fs-1 pt-5 pb-4 text-white text-center'>Movies</h1>
+    <Add></Add>
+    <div className=" d-flex row justify-content-center pb-5 mt-5">
+      {movies.map(el => (<MovieCard key={el.id} title={el.title} description={el.description}  posterURL={el.posterURL} rating={el.rating} />))}
+      </div>
     </div>
   );
 }

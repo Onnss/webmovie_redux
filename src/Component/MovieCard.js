@@ -1,7 +1,7 @@
 import React from "react";
 import Rating from '@mui/material/Rating';
 function MovieCard(props) {
-    return ( <div className="container card p-3  bg-body rounded mt-5 mx-2 justify-content-evenly" style={{width:'300px',height:'400px'}} >
+    return ( <div className="container card p-3  bg-body rounded mt-3 mx-2 justify-content-evenly" style={{width:'300px',height:'400px'}} >
     <img className="d-flex w-75 align-self-center" src={props.posterURL} alt="Movie" />
     <h2 className="text-center">{props.title}</h2>
     <div className="d-flex row align-self-start">

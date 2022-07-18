@@ -6,36 +6,51 @@ import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
-function Add() {
-  //   const [show, setShow] = useState(false);
-  // const handleClose = () => setShow(false);
-  // const handleShow = () => setShow(true);
-
+function Add({addMovie}) {
+  const [show, setShow] = useState(false);
+  const [newMovie,setnewMovie]=useState({
+    id:8, //uuidv4
+    title:"",
+    description:"",
+    posterURL:"",
+    rating:0,
+  });
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const handleChange=(e)=>{
+    setnewMovie({...newMovie, [e.target.name]:e.target.value})
+  }
+  const handleSave=()=>{
+    addMovie(newMovie)
+    handleClose()
+  }
   return (
     <>
-      <Button variant="success" size="lg" className='position-absolute top-25 end-0 me-5' >
-        Add
+      <Button variant="success" size="lg" className='w-25 me-5' onClick={handleShow}>
+        Add a movie
       </Button>
 
-      <Modal >
+      <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Add a movie</Modal.Title>
         </Modal.Header>
         <Modal.Body className=' row'>
-        <label htmlFor="title">Title : </label>
-            <input type="text" id='title'/>
-            <label htmlFor="Description">Description :</label>
-            <input type="text" id='Description' />
-            <label htmlFor="Image">Image URL :</label>
-            <input type="text" id='Image' />
-            <Typography component="legend">Rating</Typography>
-            <Rating name="half-rating" defaultValue={2.5} precision={0.5} />
+            <label htmlFor="title" className='mt-1'>Title : </label>
+            <input onChange={handleChange} name='title' type="text" id='title'/>
+            <label htmlFor="Description" className='mt-2'>Description :</label>
+            <input onChange={handleChange} name='description' type="text" id='Description' />
+            <label htmlFor="Image" className='mt-2'>Image URL :</label>
+            <input onChange={handleChange} name='posterURL' type="text" id='Image' />
+            <Typography component="legend" className='mt-2'>Rating</Typography>
+            <Rating name="rating" defaultValue={0} precision={0.5} onChange={(rvrnt,newValue)=>{
+              setnewMovie({...newMovie,rating:newValue})
+            }} />
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" >
+          <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary"> Save Changes </Button>
+          <Button variant="primary" onClick={handleSave}> Add movie </Button>
         </Modal.Footer>
       </Modal>
     </>

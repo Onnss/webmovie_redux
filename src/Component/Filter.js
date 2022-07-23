@@ -1,6 +1,6 @@
 import React from 'react'
 import Rating from '@mui/material/Rating';
-function Filter({setsearch,setRate,rate}) {
+function Filter({setsearch,setRate}) {
     
   return (
     <div className='d-flex w-75'>

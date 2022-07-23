@@ -11,6 +11,7 @@ function Add({addMovie}) {
   const [newMovie,setnewMovie]=useState({
     id:8, //uuidv4
     title:"",
+    genre:'',
     description:"",
     posterURL:"",
     rating:0,
@@ -37,10 +38,14 @@ function Add({addMovie}) {
         <Modal.Body className=' row'>
             <label htmlFor="title" className='mt-1'>Title : </label>
             <input onChange={handleChange} name='title' type="text" id='title'/>
+            <label htmlFor="genre" className='mt-2'>Genre :</label>
+            <input onChange={handleChange} name='genre' type="text" id='genre' />
             <label htmlFor="Description" className='mt-2'>Description :</label>
             <input onChange={handleChange} name='description' type="text" id='Description' />
             <label htmlFor="Image" className='mt-2'>Image URL :</label>
             <input onChange={handleChange} name='posterURL' type="text" id='Image' />
+            <label htmlFor="trailer" className='mt-2'>Trailer :</label>
+            <input onChange={handleChange} name='trailer' type="text" id='trailer' />
             <Typography component="legend" className='mt-2'>Rating</Typography>
             <Rating name="rating" defaultValue={0} precision={0.5} onChange={(rvrnt,newValue)=>{
               setnewMovie({...newMovie,rating:newValue})

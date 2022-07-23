@@ -5,7 +5,7 @@ function MovieCard(props) {
     <img className="d-flex w-75 align-self-center" src={props.posterURL} alt="Movie" />
     <h2 className="text-center">{props.title}</h2>
     <div className="d-flex row align-self-start">
-    <h6 className="w-50">{props.description}</h6> 
+    <h6 className="w-50">{props.genre}</h6> 
     <Rating className="w-50" name="half-rating-read" defaultValue={props.rating} precision={0.5} readOnly />
     </div>
     </div> );
